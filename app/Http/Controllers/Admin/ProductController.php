@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
 use App\Models\Brand;
-use App\Http\Requests\ProductAddRequest;
-use App\Models\KeysAttribute;
-use App\Models\ValuesAttribute;
-use App\Models\Attribute;
+use App\Http\Requests\ProductRequest;
+use App\Models\ProductAttributeKeys;
+use App\Models\ProductAttributeValues;
 use App\MyHelper\RecursiveCategories;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\ProductImages;
+use Image;
 
 class ProductController extends Controller
 {
@@ -27,22 +28,25 @@ class ProductController extends Controller
     public function index(Products $products,Request $request)
     {
         if(Request()->ajax()) {
-            return $datatables = datatables()->of($products->select('*'))
+            return $datatables = datatables()->of($products->select('*')->with('GetCategoriesName:id,name'))
             ->addColumn('action', function($row) {
-                $orther = 'products';
-                return view('admin.component.action_button' , compact('row','orther'));
+                $name = 'products';
+                return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('price', function($row) {
                 return number_format($row->price);
             })
-            ->editColumn('image', function($row) {
-                $image = asset('storage').json_decode($row->hasManyAttr[0]->hasManyValuesAttr[0]->image)[0];
-                return '<img src="'.$image.'" alt="" style="max-width: 100px">';
+            ->addColumn('path', function($row) {
+                $url = asset('storage').$row->GetImages[0]->value;
+                $img = Image::make($url)->resize(100,null,function($constraint){
+                    $constraint->aspectRatio();
+                });
+                return '<img src="'.$img->encode('data-url').'" alt="" style="max-width: 100px">';
             })
             ->addColumn('creator', function($row) {
                 return $row->belongsToUser->name;
             })
-            ->rawColumns(['action','image','tags'])
+            ->rawColumns(['action','tags','path'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -59,7 +63,7 @@ class ProductController extends Controller
         $categories_all = Categories::select('name','id','parent')->get()->toArray();
         $data_tree = RecursiveCategories::data_tree($categories_all);
         $brand = Brand::all();
-        $keysattr = KeysAttribute::all();
+        $keysattr = ProductAttributeKeys::all();
         return view('admin.product.create',['categories' => $data_tree , 'brand' => $brand, 'key_attr' => $keysattr]);
     }
 
@@ -69,43 +73,34 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductAddRequest $request)
+    public function store(ProductRequest $request)
     {
-        $product = new Products();
-        $attribute = new Attribute();
-        $vl_attribute = new ValuesAttribute();
         $slug = Str::slug($request->name, '-');
-        
+        $request->request->add(['slug' => $slug]);
+        $request->request->add(['creator_id' => Auth::user()->id]);
+        $request->request->add(['tags' => json_encode($request->tags)]);
+        $request->request->add(['price' => str_replace(',', '', $request->price)]);
+        if ($request->discount) {
+            $request->request->add(['discount' => str_replace(',', '', $request->discount)]);
+        }
+        $product = Products::create($request->except(['value_attr','key_attr','option']));
         if ($images = $request->file('image')) {
+            $product_attr_value = ProductAttributeValues::create([
+                'value' => $request->value_attr,
+                'product_attribute_key_id' => $request->key_attr,
+                'product_id' => $product->id,
+                'option' => $request->has('code_color') ? $request->code_color : null,
+            ]);
+            $productimages = [];
             foreach ($images as $image) {
                 $extension = $image->getClientOriginalExtension();
                 $filename  = $slug.'-'.Str::random(5).'.'.$extension;
                 $image->storeAs('public/products/'.$slug, $filename);
                 $paths[]   = '/products/'.$slug.'/'.$filename;
+                array_push($productimages,['value' => '/products/'.$slug.'/'.$filename, 'product_id' => $product->id, 'key_attr_id' => $request->key_attr]);
             }
+            ProductImages::insert($productimages);
         }
-        $product->name = $request->name;
-        $product->slug = $slug;
-        $product->price = $request->price;
-        $product->discount = $request->discount;
-        $product->in_stock = $request->stock;
-        $product->description = $request->description;
-        $product->tags = json_encode($request->tags);
-        $product->creator_id = Auth::user()->id;
-        $product->categories_id = $request->categories;
-        $product->brand_id = $request->brand;
-        $product->save();
-
-        $attribute->product_id = $product->id;
-        $attribute->key_attr_id = $request->key_attr;
-        $attribute->save();
-
-        $vl_attribute->value = $request->value_attr;
-        $vl_attribute->image = json_encode($paths);
-        $vl_attribute->optional = $request->optional;
-        $vl_attribute->attribute_id = $attribute->id;
-        $vl_attribute->save();
-
         return redirect()->route('admin.products.index')->withStatus(__('Product successfully created.'));
     }
 
@@ -152,24 +147,17 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Products::find($id);
-        $id_vl_attr = [];
-        foreach ($product->hasManyAttr as $key => $value) {
-            /* each delete image */
-            foreach ($value->hasManyValuesAttr as $key => $vl_attr) {
-                foreach (json_decode($vl_attr->image) as $key => $file) {               
-                    $old_file = 'public/'.$file;
-                    if (Storage::exists($old_file)) {
-                        Storage::delete($old_file);
-                    }
-                }
+        $product = Products::findOrfail($id);
+        foreach ($product->GetImages() as $key => $value) {
+            /* each delete image */              
+            $old_file = 'public/'.$value->value;
+            if (Storage::exists($old_file)) {
+                Storage::delete($old_file);
             }
-            $id_vl_attr[] = $value->id;
         }
         Storage::deleteDirectory('public/products/'.$product->slug);
         /* delete record value attr */
-        ValuesAttribute::whereIn('attribute_id',$id_vl_attr)->delete();
-        Attribute::whereIn('id',$id_vl_attr)->delete();
+        ProductImages::where('product_id',$product->id)->delete();
         $product->delete();
         return redirect()->route('admin.products.index')->withStatus(__('Product successfully deleted.'));
     }

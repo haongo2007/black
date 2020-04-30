@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use App\Http\Requests\BrandAddRequest;
-use App\Http\Requests\BrandUpdateRequest;
+use App\Http\Requests\BrandRequest;
 use Illuminate\Support\Facades\Storage;
+use App\MyHelper\Permission;
 
 class BrandController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +21,8 @@ class BrandController extends Controller
         if(Request()->ajax()) {
             return $datatables = datatables()->of($brand->select('*'))
             ->addColumn('action', function($row) {
-                $orther = 'brand';
-                return view('admin.component.action_button' , compact('row','orther'));
+                $name = 'brand';
+                return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('image', function($row) {
                 return '<img src="'.asset('storage').$row->image.'" alt="" style="max-width: 100px">';
@@ -50,7 +50,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandAddRequest $request, Brand $brand)
+    public function store(BrandRequest $request, Brand $brand)
     {   
         if($request->image->isValid()){
             $imageName = time().'.'.$request->image->extension();
@@ -85,7 +85,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BrandUpdateRequest $request, Brand  $brand)
+    public function update(BrandRequest $request, Brand  $brand)
     {
         if ($request->hasFile('image')){
             if($request->image->isValid()){

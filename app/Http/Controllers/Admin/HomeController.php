@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use Analytics;
+use Spatie\Analytics\Period;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        //fetch the most visited pages for today and the past week
+        $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+        return view('admin.dashboard.index');
     }
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use App\Models\User;
-use App\Models\Role;
-use App\Http\Requests\UserAddRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -19,25 +18,25 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model,Request $request)
+    public function index(User $user,Request $request)
     {
         if(Request()->ajax()) {
-            return $datatables = datatables()->of($model->select('*'))
+            return $datatables = datatables()->of($user->select('*')->with('roles'))
             ->addColumn('action', function($row) {
-                $orther = 'user';
-                return view('admin.component.action_button' , compact('row'));
+                $name = 'user';
+                return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('avatar', function($row) {
                 return '<img src="'.asset('storage').$row->avatar.'" alt="" style="max-width: 100px">';
             })
-            ->rawColumns(['action','avatar'])
             ->addColumn('role', function($row) {
-                return $row->belongsToRole->name;
+                return $row->getRoleNames();
             })
+            ->rawColumns(['action','avatar'])
             ->addIndexColumn()
             ->make(true);
         }
-        return view('admin.users.index', ['users' => $model->paginate(5)]);
+        return view('admin.users.index', ['users' => $user->paginate(5)]);
     }
 
     /**
@@ -47,8 +46,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $permission = Role::all();
-        return view('admin.users.create',compact('permission'));
+        $role = Role::all();
+        return view('admin.users.create',compact('role'));
     }
 
     /**
@@ -58,25 +57,14 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserAddRequest $request, User $model)
+    public function store(UserRequest $request, User $user)
     {   
-        $model->name = $request->name;
-        $model->password = Hash::make($request->password);
-        $model->role_id = $request->role;
-        $model->email = $request->email;
-        $model->phone = $request->phone;
-        if ($request->hasFile('avatar')){
-            if($request->avatar->isValid()){
-                $imageName = time().'.'.$request->avatar->extension();
-                $request->avatar->storeAs(
-                    'public/avatar/',$imageName
-                );
-                $model->avatar = '/avatar/'.$imageName;
-            }
-        }
-        $model->save();
-        
-
+        $user->name = $request->name;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        $user->assignRole($request->role);
         return redirect()->route('admin.user.index')->withStatus(__('User successfully created.'));
     }
 
@@ -89,10 +77,6 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $permission = Role::all();
-        if ($user->id == 1) {
-            return redirect()->route('admin.user.index');
-        }
-    
         return view('admin.users.edit', compact('user','permission'));
     }
 
@@ -103,32 +87,20 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UserUpdateRequest $request, User  $user)
+    public function update(UserRequest $request, User  $user)
     {
         $hasPassword = $request->password;
 
         $user->name = $request->name;
-        $user->role_id = $request->role;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        if ($request->hasFile('avatar')){
-            if($request->avatar->isValid()){
-                $old_file = 'public/'.$user->avatar;
-                if (Storage::exists($old_file)) {
-                    Storage::delete($old_file);
-                }
-                $imageName = time().'.'.$request->avatar->extension();
-                $request->avatar->storeAs(
-                    'public/avatar/',$imageName
-                );
-                $user->avatar = '/avatar/'.$imageName;
-            }
-        }
         if ($hasPassword) {
             $user->password = Hash::make($request->password);
         }
         $user->update();
 
+        $user->syncRoles($request->role);
+        
         return redirect()->route('admin.user.index')->withStatus(__('User successfully updated.'));
     }
 

@@ -41,7 +41,6 @@
     </div>
 @stop
 @push('js')
-    @include('admin.alerts.success');
     <script>
         $(document).ready(function() {
             $('#datatables').DataTable({

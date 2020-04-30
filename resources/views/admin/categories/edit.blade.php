@@ -90,6 +90,3 @@
         </div>
     </div>
 @stop
-@push('js')
-    @include('admin.alerts.errors')
-@endpush

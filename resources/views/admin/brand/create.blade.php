@@ -31,7 +31,7 @@
                                                 <span class="btn btn-file">
                                                 <span class="fileinput-new">{{ __('Select Image') }}</span>
                                                 <span class="fileinput-exists">{{ __('Change') }}</span>
-                                                <input type="file" name="image" id="input-picture" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
+                                                <input type="file" name="image" id="input-picture" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}">
                                         		@include('admin.alerts.feedback', ['field' => 'image'])
                                                 </span>
                                                 <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> {{ __('Remove') }}</a>

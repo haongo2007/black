@@ -23,7 +23,7 @@
                                                 <th scope="col">{{ __('Name') }}</th>
                                                 <th scope="col">{{ __('price') }}</th>
                                                 <th scope="col">{{ __('Image') }}</th>
-                                                <th scope="col">{{ __('Tags') }}</th>
+                                                <th scope="col">{{ __('Categories') }}</th>
                                                 <th scope="col">{{ __('Stock') }}</th>
                                                 <th scope="col">{{ __('Creator') }}</th>
                                                 <th scope="col">{{ __('Creation Date') }}</th>
@@ -44,8 +44,6 @@
     </div>
 @stop
 @push('js')
-    @include('admin.alerts.success');
-    @include('admin.alerts.errors');
     <script>
         $(document).ready(function() {
             $('#datatables').DataTable({
@@ -58,18 +56,8 @@
                 columns: [
                     { data: 'name' },
                     { data: 'price'},
-                    { data: 'image','searchable': false,'sortable':false},
-                    { data: 'tags',
-                        "render": function ( data, type, row, meta ) {
-                            var arr = [];
-                            $.each($.parseJSON(data), function(index, val) {
-                                $.each(val.split(','), function(index, value) {
-                                    arr.push('<span class="badge badge-danger mr-1">'+value+'</span>');
-                                });
-                            });
-                            var vl = arr.toString().replace(/,/g, '');
-                            return vl;
-                    }},
+                    { data: 'path','searchable': false,'sortable':false},
+                    { data: 'get_categories_name.name',},
                     { data: 'in_stock'},
                     { data: 'creator'},
                     { data: 'created_at'},
@@ -80,7 +68,7 @@
                 language: {
                     search: "_INPUT_",
                     searchPlaceholder: "Search users",
-                }
+                },
             });
         });
     </script>

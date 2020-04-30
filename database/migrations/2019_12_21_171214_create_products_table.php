@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 100);
             $table->string('slug', 100);
             $table->decimal('price', 15, 4);
-            $table->decimal('discount', 15, 4);
+            $table->decimal('discount', 15, 4)->nullable();
             $table->integer('votes')->default(0);
             $table->integer('in_stock');
             $table->integer('viewed')->default(0);

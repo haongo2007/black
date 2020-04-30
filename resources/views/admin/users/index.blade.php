@@ -78,7 +78,6 @@
     </div>
 @endsection
 @push('js')
-    @include('admin.alerts.success');
     <script>
         $(document).ready(function() {
             $('#datatables').DataTable({

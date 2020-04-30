@@ -13,19 +13,18 @@ class CreateValuesAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('values_attribute', function (Blueprint $table) {
+        Schema::create('product_attribute_values', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('value', 100);
-            $table->text('image')->nullable();
-            $table->text('optional')->nullable();
-        });
-        Schema::table('values_attribute', function(Blueprint $table)
-        {
-            $table->unsignedBigInteger('attribute_id');
+            $table->text('code_color')->nullable();
 
-            $table->foreign('attribute_id')
-                ->references('id')->on('attribute');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')
+                ->references('id')->on('products');
 
+            $table->unsignedBigInteger('product_attribute_key_id');
+            $table->foreign('product_attribute_key_id')
+                    ->references('id')->on('product_attribute_keys');
         });
     }
 
@@ -36,6 +35,6 @@ class CreateValuesAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('values_attribute');
+        Schema::dropIfExists('product_attribute_values');
     }
 }

@@ -119,6 +119,8 @@
         <script src="{{ asset('black') }}/js/plugins/bootstrap-selectpicker.js"></script>
         <script src="{{ asset('black') }}/js/plugins/bootstrap-tagsinput.js"></script>
         
+        @include('admin.alerts.success');
+        @include('admin.alerts.errors');
         @stack('css')
         @stack('js')
     </body>

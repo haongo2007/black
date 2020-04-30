@@ -140,7 +140,3 @@
         </div>
     </div>
 @endsection
-@push('js')
-    @include('admin.alerts.success');
-    
-@endpush

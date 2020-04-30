@@ -13,7 +13,7 @@ class CreateKeysAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('keys_attribute', function (Blueprint $table) {
+        Schema::create('product_attribute_keys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
         });
@@ -26,6 +26,6 @@ class CreateKeysAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keys_attribute');
+        Schema::dropIfExists('product_attribute_keys');
     }
 }

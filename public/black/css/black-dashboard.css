@@ -5947,7 +5947,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1;
   background-color: #222a42;
 }
 
@@ -6011,7 +6011,6 @@ button.close {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
     margin: 1.75rem auto;
   }
   .modal-dialog-centered {
@@ -20379,8 +20378,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 }
 
 .modal.show .modal-dialog {
-  -webkit-transform: translate(0, 30%);
-  transform: translate(0, 30%);
+
 }
 
 code {
@@ -25009,7 +25007,7 @@ select.selectpicker {
   text-overflow: ellipsis;
   width: 90%;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #a1a7ab;
   font-weight: 400;
   text-align: left;
 }

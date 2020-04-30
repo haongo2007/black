@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
-use App\Http\Requests\CategoriesAddRequest;
-use App\Http\Requests\CategoriesUpdateRequest;
+use App\Http\Requests\CategoriesRequest;
 use App\MyHelper\RecursiveCategories;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,8 +21,8 @@ class CategoriesController extends Controller
         if(Request()->ajax()) {
             return $datatables = datatables()->of($categories->select('*'))
             ->addColumn('action', function($row) {
-                $orther = 'categories';
-                return view('admin.component.action_button' , compact('row','orther'));
+                $name = 'categories';
+                return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('banner', function($row) {
                 return '<img src="'.asset('storage').$row->banner.'" alt="" style="max-width: 100px">';
@@ -61,7 +60,7 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoriesAddRequest $request, Categories $categories)
+    public function store(CategoriesRequest $request, Categories $categories)
     {   
         if($request->banner->isValid()){
             $imageName = time().'.'.$request->banner->extension();
@@ -98,7 +97,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriesUpdateRequest $request, $id)
+    public function update(CategoriesRequest $request, $id)
     {
         $categories = Categories::find($id);
         $find_child = Categories::where('parent',$id)->get()->count();

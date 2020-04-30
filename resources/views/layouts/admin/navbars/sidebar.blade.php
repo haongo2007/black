@@ -30,37 +30,39 @@
                 </a>
             </li>
             <li @if ($pageSlug == 'products') class="active " @endif>
-                <a href="{{ route('admin.products.index') }}">
+                <a href="{{ route('admin.products.index') }}" aria-expanded="true" >
                     <i class="tim-icons icon-app"></i>
-                    <p>{{ __('Products') }}</p>
+                    <p>
+                        {{ __('Products') }}
+                    </p>
                 </a>
             </li>
             <li @if ($pageSlug == 'profile' || $pageSlug == 'users') class="active " @endif >
-                <a data-toggle="collapse" href="#laravelExamples" aria-expanded="true">
+                <a data-toggle="collapse" href="#admin" aria-expanded="true">
                     <i class="tim-icons icon-single-02"></i>
                     <p>
                         {{ __('Admin') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse @if ($pageSlug == 'profile' || $pageSlug == 'users' ) show @endif" id="laravelExamples">
+                <div class="collapse @if ($pageSlug == 'roles' || $pageSlug == 'permissions' || $pageSlug == 'users' ) show @endif" id="admin">
                 <ul class="nav">
-                    <li @if ($pageSlug == 'profile') class="active " @endif>
-                        <a href="{{ route('admin.profile.edit')  }}">
-                            <span class="sidebar-mini-icon">UP</span>
-                            <span class="sidebar-normal"> {{ __('User Profile') }} </span>
+                    <li @if ($pageSlug == 'permissions') class="active " @endif>
+                        <a href="{{ route('admin.permissions.index')  }}">
+                            <span class="sidebar-mini-icon">P</span>
+                            <span class="sidebar-normal"> {{ __('Permission') }} </span>
+                        </a>
+                    </li>
+                    <li @if ($pageSlug == 'roles') class="active " @endif>
+                        <a href="{{ route('admin.roles.index') }}">
+                            <span class="sidebar-mini-icon">R</span>
+                            <span class="sidebar-normal"> Role </span>
                         </a>
                     </li>
                     <li @if ($pageSlug == 'users') class="active " @endif>
                         <a href="{{ route('admin.user.index')  }}">
-                            <span class="sidebar-mini-icon">US</span>
-                            <span class="sidebar-normal"> {{ __('User Management') }} </span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="#">
-                            <span class="sidebar-mini-icon">RM</span>
-                            <span class="sidebar-normal"> Role Management </span>
+                            <span class="sidebar-mini-icon">U</span>
+                            <span class="sidebar-normal"> {{ __('Users') }} </span>
                         </a>
                     </li>
                 </ul>

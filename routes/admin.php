@@ -36,13 +36,22 @@ Route::group(['as'=> 'admin.'],function (){
 		Route::get('profile', ['as' => 'profile.edit', 'uses' => 'Admin\ProfileController@edit']);
 		Route::put('profile', ['as' => 'profile.update', 'uses' => 'Admin\ProfileController@update']);
 		Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'Admin\ProfileController@password']);
-		/* admin */
-		Route::resource('user', 'Admin\UserController', ['except' => ['show']]);
 		/* brand */
-		Route::resource('brand', 'Admin\BrandController', ['except' => ['show']]);
+		Route::resource('brand', 'Admin\BrandController', ['except' => ['show']])->middleware('page:Brands');
 		/* categories */
-		Route::resource('categories', 'Admin\CategoriesController', ['except' => ['show']]);
+		Route::resource('categories', 'Admin\CategoriesController', ['except' => ['show']])->middleware('page:Categories');
 		/* product */
 		Route::resource('products', 'Admin\ProductController');
+		/* super admin admin */
+		Route::group(['middleware' => 'role:Admin'],function (){	
+			/* users */
+			Route::resource('user', 'Admin\UserController', ['except' => ['show']]);
+			/* role */
+			Route::resource('roles', 'Admin\RolesController');
+			/* permission */
+			Route::resource('permissions', 'Admin\PermissionsController');
+		});
+		Route::get('procesimage', ['as' => 'procesImage', 'uses' => 'ResizeImageController@ResizeImage']);
+		
 	});
 });

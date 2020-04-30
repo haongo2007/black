@@ -31,7 +31,7 @@ class ProfileController extends Controller
         if ($request->hasFile('avatar')){
             if($request->avatar->isValid()){
                 $old_file = 'public/'.auth()->user()->avatar;
-                if (Storage::exists($old_file)) {
+                if (Storage::exists($old_file) && strpos(auth()->user()->avatar,'default') == false) {
                     Storage::delete($old_file);
                 }
                 $imageName = time().'.'.$request->avatar->extension();
@@ -42,6 +42,7 @@ class ProfileController extends Controller
             }
         }
         auth()->user()->name = $request->name;
+        auth()->user()->phone = $request->phone;
         auth()->user()->email = $request->email;
         auth()->user()->update();
 

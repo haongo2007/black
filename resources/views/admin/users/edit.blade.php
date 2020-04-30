@@ -21,26 +21,6 @@
                             @method('put')
                             <div class="card-body ">
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Profile Photo') }}</label>
-                                    <div class="col-sm-7">
-                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail img-circle">
-                                                <img src="{{ asset('black/img/avatar').'/'.$user->avatar }}" alt="...">
-                                            </div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
-                                            <div>
-                                                <span class="btn btn-file">
-                                                <span class="fileinput-new">{{ __('Select Image') }}</span>
-                                                <span class="fileinput-exists">{{ __('Change') }}</span>
-                                                <input type="file" name="avatar" id="input-picture">
-                                                </span>
-                                                <a href="#pablo" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> {{ __('Remove') }}</a>
-                                            </div>
-                                        </div>
-                                        @include('admin.alerts.feedback', ['field' => 'avatar'])
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
