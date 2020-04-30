@@ -1,6 +1,6 @@
 
 const pickroption = {
-    el: '.color-picker',
+    el: '',
     theme: 'monolith', // or 'monolith', or 'nano'
     showAlways: false,    
     closeWithKey: 'Escape',

@@ -83,13 +83,13 @@ class ProductController extends Controller
         if ($request->discount) {
             $request->request->add(['discount' => str_replace(',', '', $request->discount)]);
         }
-        $product = Products::create($request->except(['value_attr','key_attr','option']));
+        $product = Products::create($request->except(['value_attr','key_attr','color_code']));
         if ($images = $request->file('image')) {
             $product_attr_value = ProductAttributeValues::create([
                 'value' => $request->value_attr,
                 'product_attribute_key_id' => $request->key_attr,
                 'product_id' => $product->id,
-                'option' => $request->has('code_color') ? $request->code_color : null,
+                'color_code' => $request->has('color_code') ? $request->color_code : null,
             ]);
             $productimages = [];
             foreach ($images as $image) {

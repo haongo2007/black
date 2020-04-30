@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Http\Requests\BrandRequest;
 use Illuminate\Support\Facades\Storage;
 use App\MyHelper\Permission;
+use Image;
 
 class BrandController extends Controller
 {   
@@ -25,7 +26,11 @@ class BrandController extends Controller
                 return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('image', function($row) {
-                return '<img src="'.asset('storage').$row->image.'" alt="" style="max-width: 100px">';
+                $url = asset('storage').$row->image;
+                $img = Image::make($url)->resize(100,null,function($constraint){
+                    $constraint->aspectRatio();
+                });
+                return '<img src="'.$img->encode('data-url').'" alt="" style="max-width: 100px">';
             })
             ->rawColumns(['action','image'])
             ->addIndexColumn()

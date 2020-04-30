@@ -8,7 +8,7 @@ use App\Models\Categories;
 use App\Http\Requests\CategoriesRequest;
 use App\MyHelper\RecursiveCategories;
 use Illuminate\Support\Facades\Storage;
-
+use Image;
 class CategoriesController extends Controller
 {
     /**
@@ -25,7 +25,11 @@ class CategoriesController extends Controller
                 return view('admin.component.button.action' , compact('row','name'));
             })
             ->editColumn('banner', function($row) {
-                return '<img src="'.asset('storage').$row->banner.'" alt="" style="max-width: 100px">';
+                $url = asset('storage').$row->banner;
+                $img = Image::make($url)->resize(100,null,function($constraint){
+                    $constraint->aspectRatio();
+                });
+                return '<img src="'.$img->encode('data-url').'" alt="" style="max-width: 100px">';
             })
             ->editColumn('parent', function($row) {
                 if ($row->parent == 0) {

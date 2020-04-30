@@ -1,6 +1,8 @@
 @extends('layouts.admin.app', ['page' => __('Product'), 'pageSlug' => 'products'])
 @push('css')
 <link href="{{ asset('black') }}/css/monolith.min.css" rel="stylesheet" />
+<link href="{{ asset('black') }}/css/imageuploadify.min.css" rel="stylesheet" />
+
 @endpush
 @section('content')
 	<div class="container-fluid mt--7">
@@ -110,11 +112,8 @@
 								<button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
 								<button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#addimage">{{ __('Add Image') }}</button>
                             </div>
-                        </form>
-						<!-- Plugin -->
-						<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css" />
-						<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-                    </div>
+						</form>
+					</div>
                 </div>
             </div>
         </div>
@@ -123,7 +122,7 @@
     	.bootstrap-tagsinput:first-child{
     		display: none;
 		}
-		.clr-pickr{
+		.clr-pickr .pickr{
 			display: none;
 		}
     </style>
@@ -134,25 +133,9 @@
 <script src="{{ asset('black/js/plugins') }}/editor/ckeditor/styles.js"></script>
 <script src="{{ asset('black/js/plugins') }}/editor/ckeditor/adapters/jquery.js"></script>
 <script src="{{ asset('black/js/plugins') }}/editor/ckeditor/ckeditor.custom.js"></script>
-<script src="{{ asset('black') }}/myscript/simple.money.format.js"></script>
 <script src="{{ asset('black') }}/js/plugins/pickr.es5.min.js"></script>
+<script src="{{ asset('black') }}/js/imageuploadify.min.js"></script>
+<script src="{{ asset('black') }}/myscript/simple.money.format.js"></script>
 <script src="{{ asset('black') }}/myscript/pickr.js"></script>
-	<script type="text/javascript">
-		const pickr = new Pickr(pickroption);
-		$('.change_attb').change(function(){
-			var color = $(this).children('option:selected').text().toLowerCase();
-			if(color == 'color'){
-				$('.clr-pickr').show().append('<input type="hidden" name="code_color" value="">');
-				pickr.on('save', (color, instance) => {
-					pickr.hide();
-					var code = color.toRGBA().toString();
-					$('input[name="code_color"]').val(code);
-				})
-			}else{
-				$('.clr-pickr').hide();
-				$('.clr-pickr input').remove();
-			}
-		});
-        $('.money').simpleMoneyFormat();
-	</script>
+<script src="{{ asset('black') }}/myscript/product.js"></script>
 @endpush
