@@ -33,8 +33,18 @@ class ProductRequest extends FormRequest
             'in_stock' => [
                 'required'
             ],
-            'image' => 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'value_attr.0' => [
+                'required'
+            ],
+            'image1' => 'required',
+            'image1.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image1.required' => 'The first image field is required.',
+            'value_attr.0.required' => 'The first field value attribute is required.',
         ];
     }
 }

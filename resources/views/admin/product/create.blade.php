@@ -45,8 +45,8 @@
 	                                <div class="row">
 	                                    <label class="col-sm-3 col-form-label">{{ __('Discount') }}</label>
 	                                    <div class="col-sm-9">
-	                                        <div class="form-group{{ $errors->has('discount') ? ' has-danger' : '' }}">
-	                                            <input class="money form-control form-control-alternative{{ $errors->has('discount') ? ' is-invalid' : '' }}" name="discount" id="input-discount" type="text" placeholder="{{ __('Discount') }}" value="{{ old('discount') }}"  autofocus>
+	                                        <div class="form-group">
+	                                            <input class="money form-control form-control-alternative" name="discount" id="input-discount" type="text" placeholder="{{ __('Discount') }}" value="{{ old('discount') }}"  autofocus>
 	                                            @include('admin.alerts.feedback', ['field' => 'discount'])
 	                                        </div>
 	                                    </div>
@@ -63,7 +63,7 @@
 	                                <div class="row">
 	                                    <label class="col-sm-3 col-form-label">Categories</label>
 	                                    <div class="col-sm-9">
-	                                        <div class="form-group{{ $errors->has('categories_id') ? ' has-danger' : '' }}">
+	                                        <div class="form-group">
 	                                            <div class="btn-group bootstrap-select col-sm-12 pl-0 pr-0">
 	                                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="categories_id" data-style="select-with-transition" title="" data-size="100" tabindex="-98">
 	                                                    @foreach($categories as $key => $value)
@@ -71,14 +71,13 @@
 	                                                    @endforeach
 	                                                </select>
 	                                            </div>
-	                                             @include('admin.alerts.feedback', ['field' => 'categories_id'])
 	                                        </div>
 	                                    </div>
 	                                </div>
 	                                <div class="row">
 	                                    <label class="col-sm-3 col-form-label">Brand</label>
 	                                    <div class="col-sm-9">
-	                                        <div class="form-group{{ $errors->has('brand_id') ? ' has-danger' : '' }}">
+	                                        <div class="form-group">
 	                                            <div class="btn-group bootstrap-select col-sm-12 pl-0 pr-0">
 	                                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="brand_id" data-style="select-with-transition" title="" data-size="100" tabindex="-98">
 	                                                    @foreach($brand as $key => $value)
@@ -86,7 +85,6 @@
 	                                                    @endforeach
 	                                                </select>
 	                                            </div>
-	                                             @include('admin.alerts.feedback', ['field' => 'brand_id'])
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -103,7 +101,6 @@
 	                            <div class="col-sm-6">
 									<div class="form-group">
 										<textarea id="editor1" name="description" class="form-control form-control-alternative"></textarea>
-										@include('admin.alerts.feedback', ['field' => 'description'])
 									</div>
 								</div>
 							</div>

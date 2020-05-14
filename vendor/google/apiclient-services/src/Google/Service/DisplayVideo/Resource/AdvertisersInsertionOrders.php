@@ -117,7 +117,7 @@ class Google_Service_DisplayVideo_Resource_AdvertisersInsertionOrders extends Go
    *
    * * All insertion orders under a campaign: `campaignId="1234"` * All
    * `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
-   * advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" or
+   * advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
    * entityStatus="ENTITY_STATUS_PAUSED")`
    *
    * The length of this field should be no more than 500 characters.

@@ -7,28 +7,31 @@
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-sm-6 text-left">
-                            <h5 class="card-category">Total Shipments</h5>
-                            <h2 class="card-title">Performance</h2>
+                            <h5 class="card-category">Analytics</h5>
+                            <h2 class="card-title">Visitors & PageViews</h2>
                         </div>
                         <div class="col-sm-6">
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                            <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                            <label class="btn btn-sm btn-primary btn-simple active" id="0" 
+                                data="{{ $weeks }}">
                                 <input type="radio" name="options" checked>
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Week</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-single-02"></i>
                                 </span>
                             </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="1">
+                            <label class="btn btn-sm btn-primary btn-simple" id="1"
+                                data="{{ $months }}">
                                 <input type="radio" class="d-none d-sm-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Month</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-gift-2"></i>
                                 </span>
                             </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="2">
+                            <label class="btn btn-sm btn-primary btn-simple" id="2"
+                                data="{{ $years }}">
                                 <input type="radio" class="d-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Year</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-tap-02"></i>
                                 </span>
@@ -39,7 +42,8 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="chartBig1"></canvas>
+                        <canvas id="chartBig1">
+                        </canvas>
                     </div>
                 </div>
             </div>
@@ -583,7 +587,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 ml-auto mr-auto">
-                            <div id="worldMap" style="height: 300px;"></div>
+                            <div data="{{ $country }}" id="worldMap" style="height: 300px;"></div>
                         </div>
                     </div>
                 </div>

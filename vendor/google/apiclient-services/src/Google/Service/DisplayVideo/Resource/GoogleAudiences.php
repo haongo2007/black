@@ -32,10 +32,10 @@ class Google_Service_DisplayVideo_Resource_GoogleAudiences extends Google_Servic
    * fetch.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string advertiserId The ID of the advertiser that has access to
-   * the fetched Google audience.
    * @opt_param string partnerId The ID of the partner that has access to the
    * fetched Google audience.
+   * @opt_param string advertiserId The ID of the advertiser that has access to
+   * the fetched Google audience.
    * @return Google_Service_DisplayVideo_GoogleAudience
    */
   public function get($googleAudienceId, $optParams = array())

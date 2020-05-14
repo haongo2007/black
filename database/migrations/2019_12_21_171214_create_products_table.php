@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('votes')->default(0);
             $table->integer('in_stock');
             $table->integer('viewed')->default(0);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->text('tags');
             $table->timestamps();
 

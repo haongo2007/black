@@ -109,7 +109,7 @@
         {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
         <!--  Notifications Plugin    -->
         <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
-
+        <script src="{{ asset('black/js/plugins/sweetalert2.min.js') }}"></script>
         <script src="{{ asset('black') }}/js/black-dashboard.min.js"></script>
         <script src="{{ asset('black') }}/js/theme.js"></script>
         <script src="{{ asset('black') }}/js/settings.js"></script>

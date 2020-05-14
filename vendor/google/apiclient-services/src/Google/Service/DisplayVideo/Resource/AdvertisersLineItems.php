@@ -57,6 +57,14 @@ class Google_Service_DisplayVideo_Resource_AdvertisersLineItems extends Google_S
    * targeting options for.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string orderBy Field by which to sort the list. Acceptable values
+   * are:
+   *
+   * * `targetingType` (default)
+   *
+   * The default sorting order is ascending. To specify descending order for a
+   * field, a suffix "desc" should be added to the field name. Example:
+   * `targetingType desc`.
    * @opt_param string filter Allows filtering by assigned targeting option
    * properties. Supported syntax:
    *
@@ -83,14 +91,6 @@ class Google_Service_DisplayVideo_Resource_AdvertisersLineItems extends Google_S
    * @opt_param int pageSize Requested page size. The size must be an integer
    * between `1` and `5000`. If unspecified, the default is '5000'. Returns error
    * code `INVALID_ARGUMENT` if an invalid value is specified.
-   * @opt_param string orderBy Field by which to sort the list. Acceptable values
-   * are:
-   *
-   * * `targetingType` (default)
-   *
-   * The default sorting order is ascending. To specify descending order for a
-   * field, a suffix "desc" should be added to the field name. Example:
-   * `targetingType desc`.
    * @return Google_Service_DisplayVideo_BulkListLineItemAssignedTargetingOptionsResponse
    */
   public function bulkListLineItemAssignedTargetingOptions($advertiserId, $lineItemId, $optParams = array())
@@ -174,7 +174,7 @@ class Google_Service_DisplayVideo_Resource_AdvertisersLineItems extends Google_S
    * * All line items under an insertion order: `insertionOrderId="1234"` * All
    * `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
    * `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
-   * `(entityStatus="ENTITY_STATUS_ACTIVE" or entityStatus="ENTITY_STATUS_PAUSED")
+   * `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
    * AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"`
    *
    * The length of this field should be no more than 500 characters.

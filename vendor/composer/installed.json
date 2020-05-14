@@ -1,17 +1,17 @@
 [
     {
         "name": "barryvdh/laravel-debugbar",
-        "version": "v3.3.2",
-        "version_normalized": "3.3.2.0",
+        "version": "v3.3.3",
+        "version_normalized": "3.3.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/barryvdh/laravel-debugbar.git",
-            "reference": "95c31aab33689cd4572d27038186886f4bfa63ae"
+            "reference": "57f2219f6d9efe41ed1bc880d86701c52f261bf5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/95c31aab33689cd4572d27038186886f4bfa63ae",
-            "reference": "95c31aab33689cd4572d27038186886f4bfa63ae",
+            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/57f2219f6d9efe41ed1bc880d86701c52f261bf5",
+            "reference": "57f2219f6d9efe41ed1bc880d86701c52f261bf5",
             "shasum": ""
         },
         "require": {
@@ -26,7 +26,7 @@
         "require-dev": {
             "laravel/framework": "5.5.x"
         },
-        "time": "2020-04-16T20:19:40+00:00",
+        "time": "2020-05-05T10:53:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -67,6 +67,77 @@
             "laravel",
             "profiler",
             "webprofiler"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/barryvdh",
+                "type": "github"
+            }
+        ]
+    },
+    {
+        "name": "defuse/php-encryption",
+        "version": "v2.2.1",
+        "version_normalized": "2.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/defuse/php-encryption.git",
+            "reference": "0f407c43b953d571421e0020ba92082ed5fb7620"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/defuse/php-encryption/zipball/0f407c43b953d571421e0020ba92082ed5fb7620",
+            "reference": "0f407c43b953d571421e0020ba92082ed5fb7620",
+            "shasum": ""
+        },
+        "require": {
+            "ext-openssl": "*",
+            "paragonie/random_compat": ">= 2",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "nikic/php-parser": "^2.0|^3.0|^4.0",
+            "phpunit/phpunit": "^4|^5"
+        },
+        "time": "2018-07-24T23:27:56+00:00",
+        "bin": [
+            "bin/generate-defuse-key"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Defuse\\Crypto\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Hornby",
+                "email": "taylor@defuse.ca",
+                "homepage": "https://defuse.ca/"
+            },
+            {
+                "name": "Scott Arciszewski",
+                "email": "info@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "Secure PHP Encryption Library",
+        "keywords": [
+            "aes",
+            "authenticated encryption",
+            "cipher",
+            "crypto",
+            "cryptography",
+            "encrypt",
+            "encryption",
+            "openssl",
+            "security",
+            "symmetric key cryptography"
         ]
     },
     {
@@ -650,17 +721,17 @@
     },
     {
         "name": "filp/whoops",
-        "version": "2.7.1",
-        "version_normalized": "2.7.1.0",
+        "version": "2.7.2",
+        "version_normalized": "2.7.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
+            "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
-            "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
+            "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
             "shasum": ""
         },
         "require": {
@@ -676,7 +747,7 @@
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2020-01-15T10:00:00+00:00",
+        "time": "2020-05-05T12:28:07+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -880,17 +951,17 @@
     },
     {
         "name": "google/apiclient-services",
-        "version": "v0.132",
-        "version_normalized": "0.132.0.0",
+        "version": "v0.133",
+        "version_normalized": "0.133.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/googleapis/google-api-php-client-services.git",
-            "reference": "317c8555eaea64a38594d9e617b59547cea45f3e"
+            "reference": "dd53c4a23a5c4d868e409585e30ab31da278b5d2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/317c8555eaea64a38594d9e617b59547cea45f3e",
-            "reference": "317c8555eaea64a38594d9e617b59547cea45f3e",
+            "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/dd53c4a23a5c4d868e409585e30ab31da278b5d2",
+            "reference": "dd53c4a23a5c4d868e409585e30ab31da278b5d2",
             "shasum": ""
         },
         "require": {
@@ -899,7 +970,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8|^5"
         },
-        "time": "2020-04-22T00:25:30+00:00",
+        "time": "2020-05-03T00:24:28+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1383,6 +1454,161 @@
         "abandoned": "php-parallel-lint/php-console-highlighter"
     },
     {
+        "name": "laminas/laminas-diactoros",
+        "version": "2.3.0",
+        "version_normalized": "2.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laminas/laminas-diactoros.git",
+            "reference": "5ab185dba63ec655a2380c97711b09adc7061f89"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/5ab185dba63ec655a2380c97711b09adc7061f89",
+            "reference": "5ab185dba63ec655a2380c97711b09adc7061f89",
+            "shasum": ""
+        },
+        "require": {
+            "laminas/laminas-zendframework-bridge": "^1.0",
+            "php": "^7.1",
+            "psr/http-factory": "^1.0",
+            "psr/http-message": "^1.0"
+        },
+        "conflict": {
+            "phpspec/prophecy": "<1.9.0"
+        },
+        "provide": {
+            "psr/http-factory-implementation": "1.0",
+            "psr/http-message-implementation": "1.0"
+        },
+        "replace": {
+            "zendframework/zend-diactoros": "^2.2.1"
+        },
+        "require-dev": {
+            "ext-curl": "*",
+            "ext-dom": "*",
+            "ext-libxml": "*",
+            "http-interop/http-factory-tests": "^0.5.0",
+            "laminas/laminas-coding-standard": "~1.0.0",
+            "php-http/psr7-integration-tests": "^1.0",
+            "phpunit/phpunit": "^7.5.18"
+        },
+        "time": "2020-04-27T17:07:01+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3.x-dev",
+                "dev-develop": "2.4.x-dev"
+            },
+            "laminas": {
+                "config-provider": "Laminas\\Diactoros\\ConfigProvider",
+                "module": "Laminas\\Diactoros"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/functions/create_uploaded_file.php",
+                "src/functions/marshal_headers_from_sapi.php",
+                "src/functions/marshal_method_from_sapi.php",
+                "src/functions/marshal_protocol_version_from_sapi.php",
+                "src/functions/marshal_uri_from_sapi.php",
+                "src/functions/normalize_server.php",
+                "src/functions/normalize_uploaded_files.php",
+                "src/functions/parse_cookie_header.php",
+                "src/functions/create_uploaded_file.legacy.php",
+                "src/functions/marshal_headers_from_sapi.legacy.php",
+                "src/functions/marshal_method_from_sapi.legacy.php",
+                "src/functions/marshal_protocol_version_from_sapi.legacy.php",
+                "src/functions/marshal_uri_from_sapi.legacy.php",
+                "src/functions/normalize_server.legacy.php",
+                "src/functions/normalize_uploaded_files.legacy.php",
+                "src/functions/parse_cookie_header.legacy.php"
+            ],
+            "psr-4": {
+                "Laminas\\Diactoros\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "PSR HTTP Message implementations",
+        "homepage": "https://laminas.dev",
+        "keywords": [
+            "http",
+            "laminas",
+            "psr",
+            "psr-7"
+        ],
+        "funding": [
+            {
+                "url": "https://funding.communitybridge.org/projects/laminas-project",
+                "type": "community_bridge"
+            }
+        ]
+    },
+    {
+        "name": "laminas/laminas-zendframework-bridge",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
+            "reference": "bfbbdb6c998d50dbf69d2187cb78a5f1fa36e1e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/bfbbdb6c998d50dbf69d2187cb78a5f1fa36e1e9",
+            "reference": "bfbbdb6c998d50dbf69d2187cb78a5f1fa36e1e9",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1",
+            "squizlabs/php_codesniffer": "^3.5"
+        },
+        "time": "2020-04-03T16:01:00+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev",
+                "dev-develop": "1.1.x-dev"
+            },
+            "laminas": {
+                "module": "Laminas\\ZendFrameworkBridge"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/autoload.php"
+            ],
+            "psr-4": {
+                "Laminas\\ZendFrameworkBridge\\": "src//"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Alias legacy ZF class names to Laminas Project equivalents.",
+        "keywords": [
+            "ZendFramework",
+            "autoloading",
+            "laminas",
+            "zf"
+        ],
+        "funding": [
+            {
+                "url": "https://funding.communitybridge.org/projects/laminas-project",
+                "type": "community_bridge"
+            }
+        ]
+    },
+    {
         "name": "laravel-frontend-presets/black-dashboard",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -1429,17 +1655,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v6.18.11",
-        "version_normalized": "6.18.11.0",
+        "version": "v6.18.13",
+        "version_normalized": "6.18.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "73bc10bb23aab7539c8ffae6d5dc3c4b277de557"
+            "reference": "39519d03237a81380e2126d667e898e2922db444"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/73bc10bb23aab7539c8ffae6d5dc3c4b277de557",
-            "reference": "73bc10bb23aab7539c8ffae6d5dc3c4b277de557",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/39519d03237a81380e2126d667e898e2922db444",
+            "reference": "39519d03237a81380e2126d667e898e2922db444",
             "shasum": ""
         },
         "require": {
@@ -1541,7 +1767,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.2).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2020-04-28T15:18:58+00:00",
+        "time": "2020-05-05T15:53:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1573,6 +1799,81 @@
         "keywords": [
             "framework",
             "laravel"
+        ]
+    },
+    {
+        "name": "laravel/passport",
+        "version": "v9.0.1",
+        "version_normalized": "9.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/passport.git",
+            "reference": "a368f9e079b6c52a8c6aa17f7dce3d98c0a61102"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/passport/zipball/a368f9e079b6c52a8c6aa17f7dce3d98c0a61102",
+            "reference": "a368f9e079b6c52a8c6aa17f7dce3d98c0a61102",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "firebase/php-jwt": "^5.0",
+            "guzzlehttp/guzzle": "^6.0",
+            "illuminate/auth": "^6.0|^7.0",
+            "illuminate/console": "^6.0|^7.0",
+            "illuminate/container": "^6.0|^7.0",
+            "illuminate/contracts": "^6.0|^7.0",
+            "illuminate/cookie": "^6.0|^7.0",
+            "illuminate/database": "^6.0|^7.0",
+            "illuminate/encryption": "^6.0|^7.0",
+            "illuminate/http": "^6.0|^7.0",
+            "illuminate/support": "^6.0|^7.0",
+            "laminas/laminas-diactoros": "^2.2",
+            "league/oauth2-server": "^8.1",
+            "nyholm/psr7": "^1.0",
+            "php": "^7.2",
+            "phpseclib/phpseclib": "^2.0",
+            "symfony/psr-http-message-bridge": "^2.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0",
+            "orchestra/testbench": "^4.4|^5.0",
+            "phpunit/phpunit": "^8.0"
+        },
+        "time": "2020-05-06T17:12:38+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "9.x-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Laravel\\Passport\\PassportServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Laravel\\Passport\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "Laravel Passport provides OAuth2 server support to Laravel.",
+        "keywords": [
+            "laravel",
+            "oauth",
+            "passport"
         ]
     },
     {
@@ -1642,18 +1943,75 @@
         ]
     },
     {
-        "name": "league/commonmark",
-        "version": "1.4.2",
-        "version_normalized": "1.4.2.0",
+        "name": "lcobucci/jwt",
+        "version": "3.3.1",
+        "version_normalized": "3.3.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31"
+            "url": "https://github.com/lcobucci/jwt.git",
+            "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9e780d972185e4f737a03bade0fd34a9e67bbf31",
-            "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31",
+            "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+            "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "ext-openssl": "*",
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "~1.5",
+            "phpmd/phpmd": "~2.2",
+            "phpunit/php-invoker": "~1.1",
+            "phpunit/phpunit": "^5.7 || ^7.3",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2019-05-24T18:30:49+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Lcobucci\\JWT\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Luís Otávio Cobucci Oblonczyk",
+                "email": "lcobucci@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+        "keywords": [
+            "JWS",
+            "jwt"
+        ]
+    },
+    {
+        "name": "league/commonmark",
+        "version": "1.4.3",
+        "version_normalized": "1.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/commonmark.git",
+            "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/412639f7cfbc0b31ad2455b2fe965095f66ae505",
+            "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505",
             "shasum": ""
         },
         "require": {
@@ -1676,7 +2034,7 @@
             "scrutinizer/ocular": "^1.5",
             "symfony/finder": "^4.2"
         },
-        "time": "2020-04-24T13:39:56+00:00",
+        "time": "2020-05-04T22:15:21+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -1741,6 +2099,58 @@
                 "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
                 "type": "tidelift"
             }
+        ]
+    },
+    {
+        "name": "league/event",
+        "version": "2.2.0",
+        "version_normalized": "2.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/event.git",
+            "reference": "d2cc124cf9a3fab2bb4ff963307f60361ce4d119"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/event/zipball/d2cc124cf9a3fab2bb4ff963307f60361ce4d119",
+            "reference": "d2cc124cf9a3fab2bb4ff963307f60361ce4d119",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "henrikbjorn/phpspec-code-coverage": "~1.0.1",
+            "phpspec/phpspec": "^2.2"
+        },
+        "time": "2018-11-26T11:52:41+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Event\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
+            }
+        ],
+        "description": "Event package",
+        "keywords": [
+            "emitter",
+            "event",
+            "listener"
         ]
     },
     {
@@ -1827,21 +2237,112 @@
             "s3",
             "sftp",
             "storage"
+        ],
+        "funding": [
+            {
+                "url": "https://offset.earth/frankdejonge",
+                "type": "other"
+            }
+        ]
+    },
+    {
+        "name": "league/oauth2-server",
+        "version": "8.1.0",
+        "version_normalized": "8.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/oauth2-server.git",
+            "reference": "b53d324f774eb782250f7d8973811a33a75ecdef"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/b53d324f774eb782250f7d8973811a33a75ecdef",
+            "reference": "b53d324f774eb782250f7d8973811a33a75ecdef",
+            "shasum": ""
+        },
+        "require": {
+            "defuse/php-encryption": "^2.2.1",
+            "ext-json": "*",
+            "ext-openssl": "*",
+            "lcobucci/jwt": "^3.3.1",
+            "league/event": "^2.2",
+            "php": ">=7.2.0",
+            "psr/http-message": "^1.0.1"
+        },
+        "replace": {
+            "league/oauth2server": "*",
+            "lncd/oauth2": "*"
+        },
+        "require-dev": {
+            "laminas/laminas-diactoros": "^2.3.0",
+            "phpstan/phpstan": "^0.11.19",
+            "phpstan/phpstan-phpunit": "^0.11.2",
+            "phpunit/phpunit": "^8.5.4 || ^9.1.3",
+            "roave/security-advisories": "dev-master"
+        },
+        "time": "2020-04-29T22:14:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\OAuth2\\Server\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alex Bilbie",
+                "email": "hello@alexbilbie.com",
+                "homepage": "http://www.alexbilbie.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Andy Millington",
+                "email": "andrew@noexceptions.io",
+                "homepage": "https://www.noexceptions.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
+        "homepage": "https://oauth2.thephpleague.com/",
+        "keywords": [
+            "Authentication",
+            "api",
+            "auth",
+            "authorisation",
+            "authorization",
+            "oauth",
+            "oauth 2",
+            "oauth 2.0",
+            "oauth2",
+            "protect",
+            "resource",
+            "secure",
+            "server"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/sephster",
+                "type": "github"
+            }
         ]
     },
     {
         "name": "maximebf/debugbar",
-        "version": "v1.16.2",
-        "version_normalized": "1.16.2.0",
+        "version": "v1.16.3",
+        "version_normalized": "1.16.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/maximebf/php-debugbar.git",
-            "reference": "40f375504a4dd8e59f779c3f3cac524777ddcde5"
+            "reference": "1a1605b8e9bacb34cc0c6278206d699772e1d372"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/40f375504a4dd8e59f779c3f3cac524777ddcde5",
-            "reference": "40f375504a4dd8e59f779c3f3cac524777ddcde5",
+            "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/1a1605b8e9bacb34cc0c6278206d699772e1d372",
+            "reference": "1a1605b8e9bacb34cc0c6278206d699772e1d372",
             "shasum": ""
         },
         "require": {
@@ -1857,7 +2358,7 @@
             "monolog/monolog": "Log using Monolog",
             "predis/predis": "Redis storage"
         },
-        "time": "2020-04-16T09:05:52+00:00",
+        "time": "2020-05-06T07:06:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2297,6 +2798,70 @@
         ]
     },
     {
+        "name": "nyholm/psr7",
+        "version": "1.2.1",
+        "version_normalized": "1.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Nyholm/psr7.git",
+            "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Nyholm/psr7/zipball/55ff6b76573f5b242554c9775792bd59fb52e11c",
+            "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "php-http/message-factory": "^1.0",
+            "psr/http-factory": "^1.0",
+            "psr/http-message": "^1.0"
+        },
+        "provide": {
+            "psr/http-factory-implementation": "1.0",
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "http-interop/http-factory-tests": "dev-master",
+            "php-http/psr7-integration-tests": "dev-master",
+            "phpunit/phpunit": "^7.5"
+        },
+        "time": "2019-09-05T13:24:16+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Nyholm\\Psr7\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tobias Nyholm",
+                "email": "tobias.nyholm@gmail.com"
+            },
+            {
+                "name": "Martijn van der Ven",
+                "email": "martijn@vanderven.se"
+            }
+        ],
+        "description": "A fast PHP7 implementation of PSR-7",
+        "homepage": "http://tnyholm.se",
+        "keywords": [
+            "psr-17",
+            "psr-7"
+        ]
+    },
+    {
         "name": "opis/closure",
         "version": "3.5.1",
         "version_normalized": "3.5.1.0",
@@ -2511,6 +3076,58 @@
             }
         ],
         "description": "Library for handling version information and constraints"
+    },
+    {
+        "name": "php-http/message-factory",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-http/message-factory.git",
+            "reference": "a478cb11f66a6ac48d8954216cfed9aa06a501a1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-http/message-factory/zipball/a478cb11f66a6ac48d8954216cfed9aa06a501a1",
+            "reference": "a478cb11f66a6ac48d8954216cfed9aa06a501a1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4",
+            "psr/http-message": "^1.0"
+        },
+        "time": "2015-12-19T14:08:53+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            }
+        ],
+        "description": "Factory interfaces for PSR-7 HTTP Message",
+        "homepage": "http://php-http.org",
+        "keywords": [
+            "factory",
+            "http",
+            "message",
+            "stream",
+            "uri"
+        ]
     },
     {
         "name": "phpdocumentor/reflection-common",
@@ -3353,6 +3970,60 @@
         ]
     },
     {
+        "name": "psr/http-factory",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-factory.git",
+            "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+            "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0.0",
+            "psr/http-message": "^1.0"
+        },
+        "time": "2019-04-30T12:38:16+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interfaces for PSR-7 HTTP message factories",
+        "keywords": [
+            "factory",
+            "http",
+            "message",
+            "psr",
+            "psr-17",
+            "psr-7",
+            "request",
+            "response"
+        ]
+    },
+    {
         "name": "psr/http-message",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -3505,17 +4176,17 @@
     },
     {
         "name": "psy/psysh",
-        "version": "v0.10.3",
-        "version_normalized": "0.10.3.0",
+        "version": "v0.10.4",
+        "version_normalized": "0.10.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bobthecow/psysh.git",
-            "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02"
+            "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
-            "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
+            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a8aec1b2981ab66882a01cce36a49b6317dc3560",
+            "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560",
             "shasum": ""
         },
         "require": {
@@ -3538,7 +4209,7 @@
             "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
             "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
         },
-        "time": "2020-04-07T06:44:48+00:00",
+        "time": "2020-05-03T19:32:03+00:00",
         "bin": [
             "bin/psysh"
         ],
@@ -3777,6 +4448,12 @@
             "highlight.js",
             "highlight.php",
             "syntax"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/allejo",
+                "type": "github"
+            }
         ]
     },
     {
@@ -4561,6 +5238,12 @@
             "roles",
             "security",
             "spatie"
+        ],
+        "funding": [
+            {
+                "url": "https://spatie.be/open-source/support-us",
+                "type": "custom"
+            }
         ]
     },
     {
@@ -6066,6 +6749,72 @@
         ]
     },
     {
+        "name": "symfony/psr-http-message-bridge",
+        "version": "v2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/psr-http-message-bridge.git",
+            "reference": "ce709cd9c90872c08c2427b45739d5f3c781ab4f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/ce709cd9c90872c08c2427b45739d5f3c781ab4f",
+            "reference": "ce709cd9c90872c08c2427b45739d5f3c781ab4f",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "psr/http-message": "^1.0",
+            "symfony/http-foundation": "^4.4 || ^5.0"
+        },
+        "require-dev": {
+            "nyholm/psr7": "^1.1",
+            "symfony/phpunit-bridge": "^4.4 || ^5.0"
+        },
+        "suggest": {
+            "nyholm/psr7": "For a super lightweight PSR-7/17 implementation"
+        },
+        "time": "2020-01-02T08:07:11+00:00",
+        "type": "symfony-bridge",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Bridge\\PsrHttpMessage\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "PSR HTTP message bridge",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "http",
+            "http-message",
+            "psr-17",
+            "psr-7"
+        ]
+    },
+    {
         "name": "symfony/routing",
         "version": "v4.4.8",
         "version_normalized": "4.4.8.0",
@@ -6488,7 +7237,7 @@
                 "dev-master": "5.0-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\VarExporter\\": ""
@@ -6631,21 +7380,21 @@
     },
     {
         "name": "vlucas/phpdotenv",
-        "version": "v3.6.3",
-        "version_normalized": "3.6.3.0",
+        "version": "v3.6.4",
+        "version_normalized": "3.6.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/vlucas/phpdotenv.git",
-            "reference": "1b3103013797f04521c6cae5560f604649484066"
+            "reference": "10d3f853fdf1f3a6b3c7ea0c4620d2f699713db5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/1b3103013797f04521c6cae5560f604649484066",
-            "reference": "1b3103013797f04521c6cae5560f604649484066",
+            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/10d3f853fdf1f3a6b3c7ea0c4620d2f699713db5",
+            "reference": "10d3f853fdf1f3a6b3c7ea0c4620d2f699713db5",
             "shasum": ""
         },
         "require": {
-            "php": "^5.4 || ^7.0",
+            "php": "^5.4 || ^7.0 || ^8.0",
             "phpoption/phpoption": "^1.5",
             "symfony/polyfill-ctype": "^1.9"
         },
@@ -6658,7 +7407,7 @@
             "ext-filter": "Required to use the boolean validator.",
             "ext-pcre": "Required to use most of the library."
         },
-        "time": "2020-04-12T15:18:03+00:00",
+        "time": "2020-05-02T13:46:13+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -6692,6 +7441,16 @@
             "dotenv",
             "env",
             "environment"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/GrahamCampbell",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                "type": "tidelift"
+            }
         ]
     },
     {

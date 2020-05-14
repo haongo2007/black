@@ -23,14 +23,10 @@ class RolesController extends Controller
                 return view('admin.component.button.action' , compact('row','name'));
             })
             ->addColumn('permission', function($row) {
-                $badge = '';
                 if($row->name == 'Admin'){
                     return '<span class="badge badge-danger ml-1">All</span>';
                 }
-                foreach($row->permissions as $val){
-                    $badge .= '<span class="badge badge-danger ml-1">'.$val->name.'</span>';
-                }
-                return $badge;
+                return view('admin.component.modal.view' , compact('row'));
             })
             ->rawColumns(['action','permission'])
             ->addIndexColumn()

@@ -10,7 +10,7 @@
             if (typeof pickr[j] == "undefined") {    
                 pickr[j] = new Pickr(pickroption);
             }
-            _inside.find('.pickr').show().append('<input type="hidden" name="color_code" value="">');
+            _inside.find('.pickr').show().append('<input type="hidden" name="color_code'+j+'" value="">');
             checkpickr(_inside,j);
         }else{
             if (typeof pickr[j] != "undefined") {
@@ -20,11 +20,11 @@
         }
     });
     function checkpickr(_inside,j){
-        if (typeof pickr != "undefined") {    
+        if (typeof pickr[j] != "undefined") {    
             pickr[j].on('save', (color, instance) => {
-                pickr.hide();
-                var code = color.toRGBA().toString();
-                _inside.find('input[name="color_code"]').val(code);
+                pickr[j].hide();
+                var code = color.toHEXA().toString();
+                _inside.find('input[name="color_code'+j+'"]').val(code);
             });
         }
     }
@@ -38,6 +38,9 @@
         clone.find('.pickr input[name="color_code"]').remove();
         clone.find('.clr-pickr').children().remove();
         clone.find('.clr-pickr').append('<div class="color-picker-'+i+'"></div>');
+        // init more input upload file
+        clone.find('.imageuploadify').remove();
+        clone.find('input[type="file"]').attr('name','image'+i+'[]').imageuploadify();
         $('.appdn').append(clone);
         $('.selectpicker').selectpicker('refresh');
     });

@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof UnauthorizedException) {
-            return redirect()->back()->withErrors(__('You does not have the right permissions.')); 
+            return redirect()->back()->withErrors( ['permission' => __('You does not have the right permissions.')]); 
         }
         return parent::render($request, $exception);
     }

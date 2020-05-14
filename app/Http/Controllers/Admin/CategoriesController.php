@@ -106,7 +106,7 @@ class CategoriesController extends Controller
         $categories = Categories::find($id);
         $find_child = Categories::where('parent',$id)->get()->count();
         if ($find_child > 0) {
-            return redirect()->back()->withErrors(__('This category is currently a parent category and has '.$find_child.' subcategories, which cannot be changed'));
+            return redirect()->back()->withErrors(['act_err' => __('This category is currently a parent category and has '.$find_child.' subcategories, which cannot be changed')]);
         }
         if ($request->hasFile('banner')){
             if($request->banner->isValid()){
@@ -139,7 +139,7 @@ class CategoriesController extends Controller
     {
         $find_child = Categories::where('parent',$id)->get()->count();
         if ($find_child > 0) {
-            return redirect()->back()->withErrors(__('This category is currently a parent category and has '.$find_child.' subcategories, which cannot be deleted'));
+            return redirect()->back()->withErrors(['act_err' => __('This category is currently a parent category and has '.$find_child.' subcategories, which cannot be deleted')]);
         }
         $categories = Categories::find($id);
         $old_file = 'public/'.$categories->banner;

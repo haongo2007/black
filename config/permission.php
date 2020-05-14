@@ -20,6 +20,14 @@ return [
                     'Delete',
                 ]
             ],
+            'Product' => [
+                'action' => [
+                    'List',
+                    'Create',
+                    'Update',
+                    'Delete',
+                ]
+            ],
         ],
         /*
          * When using the "HasPermissions" trait from this package, we need to know which

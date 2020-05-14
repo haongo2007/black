@@ -83,24 +83,32 @@ class ProductController extends Controller
         if ($request->discount) {
             $request->request->add(['discount' => str_replace(',', '', $request->discount)]);
         }
-        $product = Products::create($request->except(['value_attr','key_attr','color_code']));
-        if ($images = $request->file('image')) {
-            $product_attr_value = ProductAttributeValues::create([
-                'value' => $request->value_attr,
-                'product_attribute_key_id' => $request->key_attr,
+        $product = Products::create($request->only(['name','slug','creator_id','price','discount','in_stock','categories_id','brand_id','tags','description']));
+        $productImages = [];
+        $productAttb = [];
+        foreach ($request->key_attr as $key => $data) {
+            $i = $key + 1;
+            $color_code = 'color_code'.$i;
+            array_push($productAttb,[
+                'value' => $request->value_attr[$key],
+                'code_color' => $request[$color_code] ?? null,
                 'product_id' => $product->id,
-                'color_code' => $request->has('color_code') ? $request->color_code : null,
+                'product_attribute_key_id' => $data
             ]);
-            $productimages = [];
-            foreach ($images as $image) {
-                $extension = $image->getClientOriginalExtension();
-                $filename  = $slug.'-'.Str::random(5).'.'.$extension;
-                $image->storeAs('public/products/'.$slug, $filename);
-                $paths[]   = '/products/'.$slug.'/'.$filename;
-                array_push($productimages,['value' => '/products/'.$slug.'/'.$filename, 'product_id' => $product->id, 'key_attr_id' => $request->key_attr]);
+            /* upload image */
+            $file_name = 'image'.$i;
+            if ($images = $request->file($file_name)) {
+                foreach ($images as $image) {
+                    $extension = $image->getClientOriginalExtension();
+                    $filename  = $slug.'-'.Str::random(5).'.'.$extension;
+                    $image->storeAs('public/products/'.$slug, $filename);
+                    $paths[]   = '/products/'.$slug.'/'.$filename;
+                    array_push($productImages,['value' => '/products/'.$slug.'/'.$filename, 'product_id' => $product->id, 'key_attr_id' => $data]);
+                }
             }
-            ProductImages::insert($productimages);
         }
+        ProductAttributeValues::insert($productAttb);
+        ProductImages::insert($productImages);
         return redirect()->route('admin.products.index')->withStatus(__('Product successfully created.'));
     }
 

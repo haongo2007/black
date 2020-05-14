@@ -41,7 +41,7 @@ Route::group(['as'=> 'admin.'],function (){
 		/* categories */
 		Route::resource('categories', 'Admin\CategoriesController', ['except' => ['show']])->middleware('page:Categories');
 		/* product */
-		Route::resource('products', 'Admin\ProductController');
+		Route::resource('products', 'Admin\ProductController')->middleware('page:Product');
 		/* super admin admin */
 		Route::group(['middleware' => 'role:Admin'],function (){	
 			/* users */

@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="addimage" tabindex="-1" role="dialog">
     <div class="modal-dialog w-75">
       <div class="modal-content">
@@ -12,7 +13,7 @@
                 <div class="col-sm-5">
                     <div class="form-group{{ $errors->has('key_attr') ? ' has-danger' : '' }}">
                         <div class="btn-group bootstrap-select col-sm-12 pl-0 pr-0">
-                            <select class="selectpicker cattb col-sm-12 pl-0 pr-0" name="key_attr" data-style="select-with-transition" title="" data-size="100" tabindex="-98">
+                            <select class="selectpicker cattb col-sm-12 pl-0 pr-0" name="key_attr[]" data-style="select-with-transition" title="" data-size="100" tabindex="-98">
                                 <option disabled selected >Choose</option>
                                 @foreach($key_attr as $key => $value)
                                     <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
@@ -23,18 +24,18 @@
                     </div>
                 </div>
                 <div class="col-sm-5">
-                    <div class="form-group{{ $errors->has('value_attr') ? ' has-danger' : '' }}">
-                        <input class="form-control form-control-alternative{{ $errors->has('value_attr') ? ' is-invalid' : '' }}" name="value_attr" id="input-value_attr" type="text" placeholder="{{ __('Value') }}" value="{{ old('value_attr') }}"  autofocus>
-                        @include('admin.alerts.feedback', ['field' => 'value_attr'])
+                    <div class="form-group{{ $errors->has('value_attr.0') ? ' has-danger' : '' }}">
+                        <input class="form-control form-control-alternative{{ $errors->has('value_attr.0') ? ' is-invalid' : '' }}" name="value_attr[]" id="input-value_attr" type="text" placeholder="{{ __('Value') }}" value="{{ old('value_attr.0') }}"  autofocus>
+                        @include('admin.alerts.feedback', ['field' => 'value_attr.0'])
                     </div>
                 </div>
                 <div class="col-sm-2 clr-pickr">
                     <div class="color-picker-1"></div>
                 </div>
                 <div class="col-sm-12">
-                    <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
-                        <input type="file" name="image[]" accept="image/*" multiple class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}">
-                        @include('admin.alerts.feedback', ['field' => 'image'])
+                    <div class="form-group{{ $errors->has('image1') ? ' has-danger' : '' }}">
+                        <input type="file" name="image1[]" accept="image/*" multiple class="form-control {{ $errors->has('image1') ? ' is-invalid' : '' }}">
+                        @include('admin.alerts.feedback', ['field' => 'image1'])
                     </div>  
                 </div>
             </div>

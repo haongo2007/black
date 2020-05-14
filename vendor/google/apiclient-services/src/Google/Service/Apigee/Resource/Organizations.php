@@ -60,37 +60,6 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
     return $this->call('get', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1Organization");
   }
   /**
-   * Gets metrics for an organization. (organizations.getMetrics)
-   *
-   * @param string $parent Required. Name of the Apigee organization. Use the
-   * following structure in your request:   `organizations/{org}`
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_Apigee_GoogleCloudApigeeV1Metrics
-   */
-  public function getMetrics($parent, $optParams = array())
-  {
-    $params = array('parent' => $parent);
-    $params = array_merge($params, $optParams);
-    return $this->call('getMetrics', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1Metrics");
-  }
-  /**
-   * Lists details for all portals. (organizations.getSites)
-   *
-   * @param string $parent Required. Name of the Apigee organization. Use the
-   * following structure in your request:   `organizations/{org}`
-   * @param array $optParams Optional parameters.
-   *
-   * @opt_param string zmsId
-   * @opt_param string domain
-   * @return Google_Service_Apigee_GoogleCloudApigeeV1SiteListResponse
-   */
-  public function getSites($parent, $optParams = array())
-  {
-    $params = array('parent' => $parent);
-    $params = array_merge($params, $optParams);
-    return $this->call('getSites', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1SiteListResponse");
-  }
-  /**
    * Lists the service accounts with the permissions required to allow the
    * Synchronizer to download environment data from the control plane.
    *
@@ -118,20 +87,6 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('getSyncAuthorization', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1SyncAuthorization");
-  }
-  /**
-   * Gets the current state of the portal application. (organizations.getSystem)
-   *
-   * @param string $parent Required. Name of the Apigee organization. Use the
-   * following structure in your request:   `organizations/{org}`
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_Apigee_GoogleCloudApigeeV1SystemState
-   */
-  public function getSystem($parent, $optParams = array())
-  {
-    $params = array('parent' => $parent);
-    $params = array_merge($params, $optParams);
-    return $this->call('getSystem', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1SystemState");
   }
   /**
    * Lists the Apigee organizations and associated GCP projects that you have

@@ -1010,15 +1010,22 @@ theme = {
     });
 
 
+    var months = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
 
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
 
+    var data = $('#0').attr('data');
+    data = $.parseJSON(data);
+    var getArrDateOfWeek = data.week;
+    var getArrVisitorOfWeek = data.visitors;
+    var getArrPageViewsOfWeek = data.pageviews;
+
+    var chart_labels = getArrDateOfWeek;
+    var chart_data_visitor = getArrVisitorOfWeek;
+    var chart_data_pageview = getArrPageViewsOfWeek;
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
@@ -1027,7 +1034,7 @@ theme = {
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Visitors",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#ff643f',
@@ -1041,7 +1048,24 @@ theme = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: chart_data,
+          data: chart_data_visitor,
+        },
+        {
+          label: "Pageviews",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#ffd600',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#ffd600',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#ffd600',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: chart_data_pageview,
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -1049,23 +1073,36 @@ theme = {
     var myChartData = new Chart(ctx, config);
     $("#0").click(function() {
       var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
+      data.datasets[0].data = chart_data_visitor;
+      data.datasets[1].data = chart_data_pageview;
       data.labels = chart_labels;
       myChartData.update();
     });
     $("#1").click(function() {
-      var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
+      var data = $(this).attr('data');
+      data = $.parseJSON(data);
+      var getArrDateOfMonth = data.month;
+      var getArrVisitorOfMonth = data.visitors;
+      var getArrPageViewsOfMonth = data.pageviews;
+
       var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
+      data.datasets[0].data = getArrVisitorOfMonth;
+      data.datasets[1].data = getArrPageViewsOfMonth;
+      data.labels = getArrDateOfMonth;
       myChartData.update();
     });
 
     $("#2").click(function() {
-      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
+      var data = $(this).attr('data');
+      data = $.parseJSON(data);
+      var getArrDateOfYear = data.year;
+      var getArrVisitorOfYear = data.visitors;
+      var getArrPageViewsOfYear = data.pageviews;
+
       var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
+      data.datasets[0].data = getArrVisitorOfYear;
+      data.datasets[1].data = getArrPageViewsOfYear;
+      data.labels = getArrDateOfYear;
       myChartData.update();
     });
 
@@ -1105,7 +1142,7 @@ theme = {
   },
 
 
-  showSwal: function(type) {
+  showSwal: function(type,data) {
     if (type == 'basic') {
       swal({
         title: "Here's a message!",
@@ -1113,24 +1150,18 @@ theme = {
         confirmButtonClass: "btn btn-success"
       }).catch(swal.noop);
 
-    } else if (type == 'title-and-text') {
-      swal({
-        title: "Here's a message!",
-        text: "It's pretty, isn't it?",
-        buttonsStyling: false,
-        confirmButtonClass: "btn btn-info"
-      }).catch(swal.noop);
+    } else if (type == 'my-custom') {
+      console.log(data);
+      var permission = '';
+      data = $.each(data, function(index, val) {
+        permission += '<span class="badge badge-danger ml-1">'+val.name+'</span>';
+      });
+      swal.fire({
+        html:permission,
+        showConfirmButton: false,
+      });
 
-    } else if (type == 'success-message') {
-      swal({
-        title: "Good job!",
-        text: "You clicked the button!",
-        buttonsStyling: false,
-        confirmButtonClass: "btn btn-success",
-        type: "success"
-      }).catch(swal.noop);
-
-    } else if (type == 'warning-message-and-confirmation') {
+    }else if (type == 'warning-message-and-confirmation') {
       swal({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -1381,23 +1412,14 @@ theme = {
   },
 
   initVectorMap: function() {
-    var mapData = {
-      "AU": 760,
-      "BR": 550,
-      "CA": 120,
-      "DE": 1300,
-      "FR": 540,
-      "GB": 690,
-      "GE": 200,
-      "IN": 200,
-      "RO": 600,
-      "RU": 300,
-      "US": 2920,
-    };
+    var x = $('#worldMap').attr('data');
+    x = $.parseJSON(x);
+    var mapData = {};
+    x.is.forEach((key, i) => mapData[key] = x.visitors[i]);
     $('#worldMap').vectorMap({
       map: 'world_mill_en',
       backgroundColor: "transparent",
-      zoomOnScroll: false,
+      zoomOnScroll: true,
       regionStyle: {
         initial: {
           fill: '#e4e4e4',
@@ -1407,14 +1429,16 @@ theme = {
           "stroke-opacity": 0
         }
       },
-
       series: {
         regions: [{
           values: mapData,
-          scale: ["#AAAAAA", "#444444"],
+          scale: ["#e14eca", "#2bffc6"],
           normalizeFunction: 'polynomial'
         }]
       },
+      onRegionTipShow: function(e, el, code){
+        el.html(mapData[code]);
+      }
     });
   },
 
